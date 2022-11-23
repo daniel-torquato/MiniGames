@@ -17,6 +17,12 @@ const GLchar *fragmentShaderSource = "#version 330 core\n"
 "out vec4 color;\n"
 "void main() {color = vec4(1.0f, 0.7f, 0.2f, 1.0f);}\0";
 
+void escapeWindow(GLFWwindow *window) {
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+        glfwSetWindowShouldClose(window, true);
+    }
+}
+
 int main () {
 
 	glfwInit();
@@ -131,6 +137,8 @@ int main () {
 	glBindVertexArray(0);
 
 	while (!glfwWindowShouldClose (window)) {
+
+        escapeWindow(window);
 		glfwPollEvents ();
 
 		glClearColor (0.5f, 0.3f, 0.3f, 1.0f);
