@@ -44,7 +44,7 @@ int main() {
 
     glViewport(0, 0, screenWidth, screenHeight);
 
-    Shader ourShader("core.vs", "core.frag");
+    Shader ourShader("res/shaders/core.vs", "res/shaders/core.frag");
 
     GLfloat vertices[] = {
             0.5f, -0.5f,  0.0f, 1.0f, 0.0f, 0.0f,
