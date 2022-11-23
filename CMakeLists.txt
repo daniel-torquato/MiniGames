@@ -2,11 +2,13 @@ cmake_minimum_required(VERSION 3.18)
 
 project(Triangle)
 
-find_package(glfw3 3.3 REQUIRED)
+find_package(glfw3 REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
 
 add_executable(triangle src/triangle.cpp)
-target_link_libraries(triangle glfw)
-target_link_libraries(triangle GLEW)
-target_link_libraries(triangle OpenGL)
+add_executable(shaders src/shaders.cpp)
+target_link_libraries(triangle glfw GLEW OpenGL)
+target_link_libraries(shaders glfw GLEW OpenGL)
+configure_file(src/core.vs core.vs COPYONLY)
+configure_file(src/core.frag core.frag COPYONLY)
