@@ -1,15 +1,10 @@
 cmake_minimum_required(VERSION 3.18)
 
-project(Triangle)
+project(MiniGames)
 
-find_package(glfw3 REQUIRED)
-find_package(GLEW REQUIRED)
-find_package(OpenGL REQUIRED)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
 
-file(GLOB SOURCE_FILES src/*.cpp)
-foreach(SOURCE_PATH ${SOURCE_FILES})
-    get_filename_component(EXECUTABLE_NAME ${SOURCE_PATH} NAME_WE)
-    add_executable(${EXECUTABLE_NAME} ${SOURCE_PATH})
-    target_link_libraries(${EXECUTABLE_NAME} glfw GLEW OpenGL)
-endforeach(SOURCE_PATH ${SOURCE_FILES})
-file(COPY res/shaders/ DESTINATION res/shaders/)
+add_subdirectory(src/Shaders)
+add_subdirectory(src/Triangle)
+
+file(COPY res DESTINATION ${CMAKE_BINARY_DIR}/build)
