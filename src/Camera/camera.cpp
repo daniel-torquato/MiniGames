@@ -76,7 +76,7 @@ int main() {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     Shader ourShader("res/shaders/camera_core.glsl", "res/shaders/camera_fragment.glsl");
-  // use with Perspective Projection
+
     GLfloat vertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
@@ -175,6 +175,7 @@ int main() {
 
         auto currentFrame = (GLfloat) glfwGetTime();
         deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
 
         glfwPollEvents();
         DoMovement();
@@ -186,13 +187,13 @@ int main() {
 
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture);
-        glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture)"), 0);
+        glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture1"), 0);
 
 
         glm::mat4 projection = glm::mat4(1.0f);
         projection = glm::perspective(camera.GetZoom(), (GLfloat) SCREEN_WIDTH / (GLfloat) SCREEN_HEIGHT, 0.1f, 1000.0f);
 
-        glm::mat4 view = glm::mat4( 1.0f );
+        glm::mat4 view = glm::mat4(1.0f);
         view = camera.GetViewMatrix();
 
         GLint modelLocation = glGetUniformLocation(ourShader.Program, "model");

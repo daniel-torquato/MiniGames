@@ -6,7 +6,7 @@
 
 #include <vector>
 
-#define GL_STATIC
+#define GLEW_STATIC
 
 #include <GL/glew.h>
 
@@ -17,7 +17,7 @@ enum Camera_Movement {
     FORWARD,
     BACKWARD,
     LEFT,
-    RIGHT,
+    RIGHT
 };
 
 const GLfloat YAW = -90.0f;
@@ -34,7 +34,7 @@ public:
            GLfloat pitch = PITCH) : front(glm::vec3(0.0f, 0.0f, -1.0f)), movementSpeed(SPEED),
                                     mouseSensitivity(SENSITIVITY), zoom(ZOOM) {
         this->position = position;
-        this->up = up;
+        this->worldUp = up;
         this->yaw = yaw;
         this->pitch = pitch;
         this->updateCameraVectors();
@@ -43,7 +43,7 @@ public:
     Camera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch)
             : front(glm::vec3(0.0f, 0.0f, -1.0f)), movementSpeed(SPEED), mouseSensitivity(SENSITIVITY), zoom(ZOOM) {
         this->position = glm::vec3(posX, posY, posZ);
-        this->up = glm::vec3(upX, upY, upZ);
+        this->worldUp = glm::vec3(upX, upY, upZ);
         this->yaw = yaw;
         this->pitch = pitch;
         this->updateCameraVectors();
@@ -127,6 +127,4 @@ private:
         this->right = glm::normalize(glm::cross(this->front, this->worldUp));
         this->up = glm::normalize(glm::cross(this->right, this->front));
     }
-
 };
-
