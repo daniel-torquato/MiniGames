@@ -8,6 +8,9 @@ struct Material {
 struct Light {
     vec3 position;
     vec3 ambient;
+    float cutOff;
+    float outerCutOff;
+
     vec3 diffuse;
     vec3 specular;
 

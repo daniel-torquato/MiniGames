@@ -225,8 +225,14 @@ int main() {
         lightingShader.Use();
         GLint lightPosLoc = glGetUniformLocation(lightingShader.Program, "light.position");
         //GLint lightDirectionLocation = glGetUniformLocation(lightingShader.Program, "light.direction");
+        GLint lightSpotDirectionLocation = glGetUniformLocation(lightingShader.Program, "light.direction");
+        GLint lightSpotCutOffLocation = glGetUniformLocation(lightingShader.Program, "light.cutOff");
+        GLint lightSpotOuterOffLocation = glGetUniformLocation(lightingShader.Program, "light.outerCutOff");
         GLint viewPosLoc = glGetUniformLocation(lightingShader.Program, "viewPos");
-        glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
+        glUniform3f(lightPosLoc, camera.GetPosition().x, camera.GetPosition().y, camera.GetPosition().z);
+        glUniform3f(lightSpotDirectionLocation, camera.GetFront().x, camera.GetFront().y, camera.GetFront().z);
+        glUniform1f(lightSpotCutOffLocation, glm::cos(glm::radians(12.5f)));
+        glUniform1f(lightSpotOuterOffLocation, glm::cos(glm::radians(17.5f)));
         //glUniform3f(lightDirectionLocation, -0.2f, 1.0f, -0.3f);
         glUniform3f(viewPosLoc, camera.GetPosition().x, camera.GetPosition().y, camera.GetPosition().z);
 
