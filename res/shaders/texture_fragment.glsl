@@ -8,5 +8,5 @@ uniform sampler2D outTexture1;
 
 void main()
 {
-    color = texture(outTexture1, TexCoord);
+    color = 1f * texture(outTexture1, TexCoord);
 }

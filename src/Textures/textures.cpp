@@ -54,8 +54,8 @@ int main() {
                 // positions(3)               // colors(3)                     // textures(3,2)
              0.5f,  0.5f,0.0f,  1.0f, 0.0f, 0.0f, 1.0f, 1.0f,
             0.5f, -0.5f,0.0f,  1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-             -0.5f, -0.5f,0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-             -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+             -0.5f, -0.5f,0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f,
+             -0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
     };
     GLuint indices[] = {
             0, 1, 3,
@@ -114,7 +114,7 @@ int main() {
         ourShader.Use();
         glActiveTexture(GL_TEXTURE);
         glBindTexture(GL_TEXTURE_2D, texture);
-        glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture)"), 0);
+        //glUniform1i(glGetUniformLocation(ourShader.Program, "ourTexture1"), 2);
 
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
