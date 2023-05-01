@@ -14,8 +14,7 @@ const GLchar *vertexShaderSource = "#version 330 core\n"
 "void main() {gl_Position = vec4(position.x, position.y, position.z, 1.0);}\0";
 
 const GLchar *fragmentShaderSource = "#version 330 core\n"
-"out vec4 color;\n"
-"void main() {color = vec4(1.0f, 0.7f, 0.2f, 1.0f);}\0";
+"void main() {gl_FragColor = vec4(1.0f, 0.7f, 0.2f, 1.0f);}\0";
 
 void escapeWindow(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
